@@ -1,14 +1,14 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IWebApiClient.cs" company="Epworth Consulting Ltd.">
+// <copyright file="PostResponse.cs" company="Epworth Consulting Ltd.">
 //   © Epworth Consulting Ltd.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Atlas.Core.WebApi.Client
+namespace Atlas.Core.WebApi.Client.Tests.Controllers
 {
-   public interface IWebApiClient
+   public class PostResponse
    {
-      TResponse Get<TResponse>(string baseUrl, string api);
+      public string Subject { get; set; }
 
-      TResponse Post<TRequest, TResponse>(string baseUrl, string api, TRequest request);
+      public string Body { get; set; }
    }
 }

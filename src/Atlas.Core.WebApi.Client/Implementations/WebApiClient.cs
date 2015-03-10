@@ -5,13 +5,35 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Atlas.Core.WebApi.Client.Implementations
 {
+   using System.Net;
+
+   using Atlas.Core.WebApi.Client.Exceptions;
+
    using Newtonsoft.Json;
 
    using RestSharp;
    using RestSharp.Serializers;
 
+   // TODO: This needs to be implemented without RestSharp so these assemblies can be signed
    public class WebApiClient : IWebApiClient
    {
+      public TResponse Get<TResponse>(string baseUrl, string api)
+      {
+         var restClient = new RestClient(baseUrl);
+         var restRequest = new RestRequest(api, Method.GET);
+
+         var restResponse = restClient.Execute(restRequest);
+
+         if (restResponse.StatusCode == HttpStatusCode.OK)
+         {
+            // TODO: Create serialisation abstraction if the serialisation needs customisation
+            var response = JsonConvert.DeserializeObject<TResponse>(restResponse.Content);
+            return response;
+         }
+
+         throw new WebApiClientException(restResponse.StatusCode, restResponse.StatusDescription, restResponse.Content);
+      }
+
       public TResponse Post<TRequest, TResponse>(string baseUrl, string api, TRequest request)
       {
          var restClient = new RestClient(baseUrl);
@@ -25,9 +47,14 @@ namespace Atlas.Core.WebApi.Client.Implementations
 
          var restResponse = restClient.Execute(restRequest);
 
-         // TODO: Create serialisation abstraction if the serialisation needs customisation
-         var response = JsonConvert.DeserializeObject<TResponse>(restResponse.Content);
-         return response;
+         if (restResponse.StatusCode == HttpStatusCode.OK)
+         {
+            // TODO: Create serialisation abstraction if the serialisation needs customisation
+            var response = JsonConvert.DeserializeObject<TResponse>(restResponse.Content);
+            return response;
+         }
+
+         throw new WebApiClientException(restResponse.StatusCode, restResponse.StatusDescription, restResponse.Content);
       }
 
       private class JsonSerialiser : ISerializer

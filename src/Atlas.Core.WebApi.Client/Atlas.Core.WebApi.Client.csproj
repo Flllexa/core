@@ -37,6 +37,7 @@
     <AssemblyOriginatorKeyFile>..\Atlas.Core.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\WebApiClientException.cs" />
     <Compile Include="Implementations\WebApiClient.cs" />
     <Compile Include="IWebApiClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Atlas.Core.WebApi</id>
+    <version>$version$</version>
+    <title>Atlas.Core.WebApi</title>
+    <authors>acraven</authors>
+    <owners>Epworth Consulting Ltd, acraven</owners>
+    <licenseUrl>https://github.com/acraven/core/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/acraven/core</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>RESTful Json WebApi</description>
+    <copyright>(c) Epworth Consulting Ltd</copyright>
+    <tags>WebApi RESTful Json</tags>
+  </metadata>
+</package>
