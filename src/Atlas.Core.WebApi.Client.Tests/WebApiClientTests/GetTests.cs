@@ -14,6 +14,10 @@ namespace Atlas.Core.WebApi.Client.Tests.WebApiClientTests
    using Atlas.Core.WebApi.Client.Tests.Controllers;
    using Atlas.Core.WebApi.Filters;
 
+   using Common.Logging;
+
+   using FakeItEasy;
+
    using Microsoft.Owin.Hosting;
 
    using NUnit.Framework;
@@ -44,7 +48,7 @@ namespace Atlas.Core.WebApi.Client.Tests.WebApiClientTests
                {
                   var config = new HttpConfiguration();
                   config.MapHttpAttributeRoutes();
-                  config.Filters.Add(new WebApiExceptionFilterAttribute());
+                  config.Filters.Add(new WebApiExceptionFilterAttribute(A.Fake<ILog>()));
                   app.UseWebApi(config);
                });
       }
