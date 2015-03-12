@@ -5,78 +5,54 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Atlas.Core.WebApi.Client.Implementations
 {
+   using System;
    using System.Net;
+   using System.Net.Http;
+   using System.Text;
 
    using Atlas.Core.WebApi.Client.Exceptions;
 
    using Newtonsoft.Json;
 
-   using RestSharp;
-   using RestSharp.Serializers;
-
-   // TODO: This needs to be implemented without RestSharp so these assemblies can be signed
+   // TODO: Create async Get and Post methods
    public class WebApiClient : IWebApiClient
    {
       public TResponse Get<TResponse>(string baseUrl, string api)
       {
-         var restClient = new RestClient(baseUrl);
-         var restRequest = new RestRequest(api, Method.GET);
+         var httpClient = new HttpClient { BaseAddress = new Uri(baseUrl) };
 
-         var restResponse = restClient.Execute(restRequest);
+         var httpResponse = httpClient.GetAsync(api).Result;
+         var responseContent = httpResponse.Content.ReadAsStringAsync().Result;
 
-         if (restResponse.StatusCode == HttpStatusCode.OK)
+         if (httpResponse.StatusCode == HttpStatusCode.OK)
          {
             // TODO: Create serialisation abstraction if the serialisation needs customisation
-            var response = JsonConvert.DeserializeObject<TResponse>(restResponse.Content);
+            var response = JsonConvert.DeserializeObject<TResponse>(responseContent);
             return response;
          }
 
-         throw new WebApiClientException(restResponse.StatusCode, restResponse.StatusDescription, restResponse.Content);
+         throw new WebApiClientException(httpResponse.StatusCode, httpResponse.ReasonPhrase, responseContent);
       }
 
       public TResponse Post<TRequest, TResponse>(string baseUrl, string api, TRequest request)
       {
-         var restClient = new RestClient(baseUrl);
-         var restRequest = new RestRequest(api, Method.POST)
-            {
-               RequestFormat = DataFormat.Json,
-               JsonSerializer = new JsonSerialiser()
-            };
+         // TODO: Create serialisation abstraction if the serialisation needs customisation
+         var jsonRequest = JsonConvert.SerializeObject(request);
 
-         restRequest.AddBody(request);
+         var httpClient = new HttpClient { BaseAddress = new Uri(baseUrl) };
+         var httpRequest = new HttpRequestMessage(HttpMethod.Post, api) { Content = new StringContent(jsonRequest, Encoding.UTF8, "application/json") };
 
-         var restResponse = restClient.Execute(restRequest);
+         var httpResponse = httpClient.SendAsync(httpRequest).Result;
+         var responseContent = httpResponse.Content.ReadAsStringAsync().Result;
 
-         if (restResponse.StatusCode == HttpStatusCode.OK)
+         if (httpResponse.StatusCode == HttpStatusCode.OK)
          {
             // TODO: Create serialisation abstraction if the serialisation needs customisation
-            var response = JsonConvert.DeserializeObject<TResponse>(restResponse.Content);
+            var response = JsonConvert.DeserializeObject<TResponse>(responseContent);
             return response;
          }
 
-         throw new WebApiClientException(restResponse.StatusCode, restResponse.StatusDescription, restResponse.Content);
-      }
-
-      private class JsonSerialiser : ISerializer
-      {
-         public JsonSerialiser()
-         {
-            this.ContentType = "application/json";
-         }
-
-         public string RootElement { get; set; }
-
-         public string Namespace { get; set; }
-
-         public string DateFormat { get; set; }
-
-         public string ContentType { get; set; }
-
-         public string Serialize(object obj)
-         {
-            // TODO: Create serialisation abstraction if the serialisation needs customisation
-            return JsonConvert.SerializeObject(obj);
-         }
+         throw new WebApiClientException(httpResponse.StatusCode, httpResponse.ReasonPhrase, responseContent);
       }
    }
 }
