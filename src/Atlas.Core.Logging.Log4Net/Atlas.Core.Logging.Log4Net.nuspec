@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Atlas.Core.Logging.Log4Net</id>
+    <version>$version$</version>
+    <title>Atlas.Core.Logging.Log4Net</title>
+    <authors>acraven</authors>
+    <owners>Epworth Consulting Ltd, acraven</owners>
+    <licenseUrl>https://github.com/acraven/core/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/acraven/core</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Log4Net implementation of the logging abstraction</description>
+    <copyright>(c) Epworth Consulting Ltd</copyright>
+    <tags>Logging Log4Net</tags>
+  </metadata>
+</package>

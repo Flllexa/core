@@ -12,17 +12,16 @@ namespace Atlas.Core.WebApi.Filters
    using System.Web.Http;
    using System.Web.Http.Filters;
 
+   using Atlas.Core.Logging;
    using Atlas.Core.WebApi.Exceptions;
-
-   using Common.Logging;
 
    public class WebApiExceptionFilterAttribute : ExceptionFilterAttribute
    {
-      private readonly ILog log;
+      private readonly ILogger logger;
 
-      public WebApiExceptionFilterAttribute(ILog log)
+      public WebApiExceptionFilterAttribute(ILogger logger)
       {
-         this.log = log;
+         this.logger = logger;
       }
 
       public override void OnException(HttpActionExecutedContext actionExecutedContext)
@@ -33,7 +32,7 @@ namespace Atlas.Core.WebApi.Filters
 
          if (webApiResponseException != null)
          {
-            this.log.WarnFormat("An expected error occured; Reason='{0}',Message='{1}'", webApiResponseException.Reason, webApiResponseException.Message);
+            this.logger.LogWarning("An expected error occured; Reason='{0}',Message='{1}'", webApiResponseException.Reason, webApiResponseException.Message);
 
             responseMessage.Content = new StringContent(webApiResponseException.Message);
             responseMessage.ReasonPhrase = webApiResponseException.Reason;
@@ -42,7 +41,7 @@ namespace Atlas.Core.WebApi.Filters
          {
             var exceptionToken = CreateExceptionToken();
 
-            this.log.ErrorFormat("An unexpected error occured. The caller was given the error token '{0}'", actionExecutedContext.Exception, exceptionToken);
+            this.logger.LogError("An unexpected error occured. The caller was given the error token '{0}'", actionExecutedContext.Exception, exceptionToken);
 
             responseMessage.Content = new StringContent(string.Format("An unexpected error has occured. Please contact your administrator quoting token '{0}'", exceptionToken));
             responseMessage.ReasonPhrase = "Unexpected Exception";

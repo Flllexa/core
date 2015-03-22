@@ -40,9 +40,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging.Core">
-      <HintPath>..\..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
-    </Reference>
     <Reference Include="FakeItEasy">
       <HintPath>..\..\packages\FakeItEasy.1.25.2\lib\net40\FakeItEasy.dll</HintPath>
     </Reference>
@@ -80,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Atlas.Core.Logging\Atlas.Core.Logging.csproj">
+      <Project>{BA823400-ED12-4665-B9FA-78721C2E0387}</Project>
+      <Name>Atlas.Core.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Atlas.Core.WebApi.Client\Atlas.Core.WebApi.Client.csproj">
       <Project>{BFDCDAB0-DDAB-4893-9563-92E63647A779}</Project>
       <Name>Atlas.Core.WebApi.Client</Name>

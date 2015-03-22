@@ -2,6 +2,16 @@
 [![Build status](https://img.shields.io/appveyor/ci/acraven/core.svg)](https://ci.appveyor.com/project/acraven/core)
 [![Coverage status](https://coveralls.io/repos/acraven/core/badge.svg)](https://coveralls.io/r/acraven/core)
 
+## Atlas.Core.Logging
+
+[![NuGet version (Atlas.Core.Logging)](https://img.shields.io/nuget/v/Atlas.Core.Logging.svg)](https://www.nuget.org/packages/Atlas.Core.Logging/)
+[![NuGet Status](http://nugetstatus.com/Atlas.Core.Logging.png)](http://nugetstatus.com/packages/Atlas.Core.Logging)
+
+## Atlas.Core.Logging.Log4Net
+
+[![NuGet version (Atlas.Core.Logging.Log4Net)](https://img.shields.io/nuget/v/Atlas.Core.Logging.Log4Net.svg)](https://www.nuget.org/packages/Atlas.Core.Logging.Log4Net/)
+[![NuGet Status](http://nugetstatus.com/Atlas.Core.Logging.Log4Net.png)](http://nugetstatus.com/packages/Atlas.Core.Logging.Log4Net)
+
 ## Atlas.Core.WebApi
 
 [![NuGet version (Atlas.Core.WebApi)](https://img.shields.io/nuget/v/Atlas.Core.WebApi.svg)](https://www.nuget.org/packages/Atlas.Core.WebApi/)

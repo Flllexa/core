@@ -9,10 +9,9 @@ namespace Atlas.Core.WebApi.Tests
    using System.Web.Http;
    using System.Web.Http.Filters;
 
+   using Atlas.Core.Logging;
    using Atlas.Core.WebApi.Exceptions;
    using Atlas.Core.WebApi.Filters;
-
-   using Common.Logging;
 
    using FakeItEasy;
 
@@ -20,14 +19,14 @@ namespace Atlas.Core.WebApi.Tests
 
    public class WebApiExceptionFilterAttributeTests
    {
-      private ILog logger;
+      private ILogger logger;
 
       private WebApiExceptionFilterAttribute componentUnderTest;
 
       [SetUp]
       public void SetupBeforeEachTest()
       {
-         this.logger = A.Fake<ILog>();
+         this.logger = A.Fake<ILogger>();
 
          this.componentUnderTest = new WebApiExceptionFilterAttribute(this.logger);
       }
@@ -39,7 +38,7 @@ namespace Atlas.Core.WebApi.Tests
 
          Assert.That(() => this.componentUnderTest.OnException(context), Throws.InstanceOf<HttpResponseException>());
 
-         A.CallTo(() => this.logger.WarnFormat("An expected error occured; Reason='{0}',Message='{1}'", "myReason", "myMessage")).MustHaveHappened(Repeated.Exactly.Once);
+         A.CallTo(() => this.logger.LogWarning("An expected error occured; Reason='{0}',Message='{1}'", "myReason", "myMessage")).MustHaveHappened(Repeated.Exactly.Once);
       }
 
       [Test]
@@ -50,7 +49,7 @@ namespace Atlas.Core.WebApi.Tests
 
          Assert.That(() => this.componentUnderTest.OnException(context), Throws.InstanceOf<HttpResponseException>());
 
-         A.CallTo(() => this.logger.ErrorFormat("An unexpected error occured. The caller was given the error token '{0}'", exception, A<string>._)).MustHaveHappened(Repeated.Exactly.Once);
+         A.CallTo(() => this.logger.LogError("An unexpected error occured. The caller was given the error token '{0}'", exception, A<string>._)).MustHaveHappened(Repeated.Exactly.Once);
       }
    }
 }
