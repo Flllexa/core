@@ -9,6 +9,10 @@ namespace Atlas.Core.Logging
 
    public interface ILogger
    {
+      bool InfoLoggingIsEnabled { get; }
+
+      bool DebugLoggingIsEnabled { get; }
+
       void LogError(string format, Exception exception, params object[] args);
 
       void LogWarning(string format, params object[] args);

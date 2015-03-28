@@ -78,6 +78,8 @@ namespace Atlas.Core.Logging.Log4Net.Tests
          const string InfoMessage = "myInfoMessage";
          var args = new object[1];
 
+         A.CallTo(() => this.log.IsInfoEnabled).Returns(true);
+
          this.componentUnderTest.LogInfo(InfoMessage, args);
 
          A.CallTo(() => this.log.InfoFormat(InfoMessage, args)).MustHaveHappened(Repeated.Exactly.Once);
@@ -89,9 +91,49 @@ namespace Atlas.Core.Logging.Log4Net.Tests
          const string DebugMessage = "myDebugMessage";
          var args = new object[1];
 
+         A.CallTo(() => this.log.IsDebugEnabled).Returns(true);
+
          this.componentUnderTest.LogDebug(DebugMessage, args);
 
          A.CallTo(() => this.log.DebugFormat(DebugMessage, args)).MustHaveHappened(Repeated.Exactly.Once);
+      }
+
+      [Test]
+      public void NotCallInfoFormatFromLogInfoWhenInfoIsNotEnabled()
+      {
+         A.CallTo(() => this.log.IsInfoEnabled).Returns(false);
+
+         this.componentUnderTest.LogInfo("myInfoMessage", new object[1]);
+
+         A.CallTo(() => this.log.InfoFormat(A<string>._, A<object[]>._)).MustNotHaveHappened();
+      }
+
+      [Test]
+      public void NotCallDebugFormatFromLogDebugWhenDebugIsNotEnabled()
+      {
+         A.CallTo(() => this.log.IsDebugEnabled).Returns(false);
+
+         this.componentUnderTest.LogDebug("myDebugMessage", new object[1]);
+
+         A.CallTo(() => this.log.DebugFormat(A<string>._, A<object[]>._)).MustNotHaveHappened();
+      }
+
+      [TestCase(true)]
+      [TestCase(false)]
+      public void ShouldReturnIsDebugEnabledFromILog(bool value)
+      {
+         A.CallTo(() => this.log.IsDebugEnabled).Returns(value);
+         
+         Assert.That(this.componentUnderTest.DebugLoggingIsEnabled, Is.EqualTo(value));
+      }
+
+      [TestCase(true)]
+      [TestCase(false)]
+      public void ShouldReturnIsInfoEnabledFromILog(bool value)
+      {
+         A.CallTo(() => this.log.IsInfoEnabled).Returns(value);
+
+         Assert.That(this.componentUnderTest.InfoLoggingIsEnabled, Is.EqualTo(value));
       }
    }
 }

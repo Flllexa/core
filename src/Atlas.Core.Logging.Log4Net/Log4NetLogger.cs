@@ -23,6 +23,16 @@ namespace Atlas.Core.Logging.Log4Net
       {
       }
 
+      public bool InfoLoggingIsEnabled
+      {
+         get { return this.log.IsInfoEnabled; }
+      }
+
+      public bool DebugLoggingIsEnabled
+      {
+         get { return this.log.IsDebugEnabled; }
+      }
+
       public static ILogger FromConfig(ILog log)
       {
          log4net.Config.XmlConfigurator.Configure();
@@ -50,11 +60,21 @@ namespace Atlas.Core.Logging.Log4Net
 
       public void LogInfo(string format, params object[] args)
       {
+         if (!this.log.IsInfoEnabled)
+         {
+            return;
+         }
+
          this.log.InfoFormat(format, args);
       }
 
       public void LogDebug(string format, params object[] args)
       {
+         if (!this.log.IsDebugEnabled)
+         {
+            return;
+         }
+
          this.log.DebugFormat(format, args);
       }
    }

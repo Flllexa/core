@@ -28,20 +28,36 @@ namespace Atlas.Core.Logging.Tests
       }
 
       [Test]
-      public void NotThrowExceptionWhenLogInfoCalled()
-      {
-         Assert.That(() => this.componentUnderTest.LogInfo("LogInfo"), Throws.Nothing);
-      }
-
-      [Test]
       public void NotThrowExceptionWhenLogWarningCalled()
       {
          Assert.That(() => this.componentUnderTest.LogWarning("LogWarning"), Throws.Nothing);
       }
 
       [Test]
+      public void NotThrowExceptionWhenLogInfoCalled()
+      {
+         Assert.That(() => this.componentUnderTest.LogInfo("LogInfo"), Throws.Nothing);
+      }
+
+      [Test]
       public void NotThrowExceptionWhenLogDebugCalled()
       {
+         Assert.That(() => this.componentUnderTest.LogDebug("LogDebug"), Throws.Nothing);
+      }
+
+      [Test]
+      public void NotThrowExceptionWhenLogInfoCalledWhenLogInfoNotEnabled()
+      {
+         this.componentUnderTest.InfoLoggingIsEnabled = false;
+
+         Assert.That(() => this.componentUnderTest.LogInfo("LogInfo"), Throws.Nothing);
+      }
+
+      [Test]
+      public void NotThrowExceptionWhenLogDebugCalledWhenLogInfoNotEnabled()
+      {
+         this.componentUnderTest.DebugLoggingIsEnabled = false;
+
          Assert.That(() => this.componentUnderTest.LogDebug("LogDebug"), Throws.Nothing);
       }
    }
