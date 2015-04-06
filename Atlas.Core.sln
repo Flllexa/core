@@ -14,7 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6AF8F407-7739-4BA9-BD52-42805C9A7742}"
 	ProjectSection(SolutionItems) = preProject
 		src\Atlas.Core.Logging.Log4Net\Atlas.Core.Logging.Log4Net.nuspec = src\Atlas.Core.Logging.Log4Net\Atlas.Core.Logging.Log4Net.nuspec
-		src\Atlas.Core.Logging\Atlas.Core.Logging.nuspec = src\Atlas.Core.Logging\Atlas.Core.Logging.nuspec
+		src\Atlas.Core\Atlas.Core.nuspec = src\Atlas.Core\Atlas.Core.nuspec
 		src\Atlas.Core.WebApi.Client\Atlas.Core.WebApi.Client.nuspec = src\Atlas.Core.WebApi.Client\Atlas.Core.WebApi.Client.nuspec
 		src\Atlas.Core.WebApi\Atlas.Core.WebApi.nuspec = src\Atlas.Core.WebApi\Atlas.Core.WebApi.nuspec
 		.nuget\packages.config = .nuget\packages.config
@@ -26,13 +26,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.WebApi", "src\At
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.WebApi.Tests", "src\Atlas.Core.WebApi.Tests\Atlas.Core.WebApi.Tests.csproj", "{141104F3-2257-44D0-8E68-AC51BFF8186F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.Logging", "src\Atlas.Core.Logging\Atlas.Core.Logging.csproj", "{BA823400-ED12-4665-B9FA-78721C2E0387}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.Logging.Log4Net", "src\Atlas.Core.Logging.Log4Net\Atlas.Core.Logging.Log4Net.csproj", "{92904F39-E359-432C-9753-B4C987443F8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.Logging.Log4Net.Tests", "src\Atlas.Core.Logging.Log4Net.Tests\Atlas.Core.Logging.Log4Net.Tests.csproj", "{4C1701FF-D426-4B2F-94D2-4172F54DF0F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.Logging.Tests", "src\Atlas.Core.Logging.Tests\Atlas.Core.Logging.Tests.csproj", "{D9DE40BF-CC56-4849-BC8F-147A31C2DD01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core", "src\Atlas.Core\Atlas.Core.csproj", "{12A97536-3CC5-4F48-919E-C4AC3B9B87C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.Tests", "src\Atlas.Core.Tests\Atlas.Core.Tests.csproj", "{EC163351-142E-4A90-AD85-82D966BBCB5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +56,6 @@ Global
 		{141104F3-2257-44D0-8E68-AC51BFF8186F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{141104F3-2257-44D0-8E68-AC51BFF8186F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{141104F3-2257-44D0-8E68-AC51BFF8186F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA823400-ED12-4665-B9FA-78721C2E0387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA823400-ED12-4665-B9FA-78721C2E0387}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA823400-ED12-4665-B9FA-78721C2E0387}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA823400-ED12-4665-B9FA-78721C2E0387}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92904F39-E359-432C-9753-B4C987443F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92904F39-E359-432C-9753-B4C987443F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92904F39-E359-432C-9753-B4C987443F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,10 +64,14 @@ Global
 		{4C1701FF-D426-4B2F-94D2-4172F54DF0F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C1701FF-D426-4B2F-94D2-4172F54DF0F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C1701FF-D426-4B2F-94D2-4172F54DF0F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9DE40BF-CC56-4849-BC8F-147A31C2DD01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9DE40BF-CC56-4849-BC8F-147A31C2DD01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9DE40BF-CC56-4849-BC8F-147A31C2DD01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9DE40BF-CC56-4849-BC8F-147A31C2DD01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A97536-3CC5-4F48-919E-C4AC3B9B87C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A97536-3CC5-4F48-919E-C4AC3B9B87C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A97536-3CC5-4F48-919E-C4AC3B9B87C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A97536-3CC5-4F48-919E-C4AC3B9B87C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC163351-142E-4A90-AD85-82D966BBCB5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC163351-142E-4A90-AD85-82D966BBCB5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC163351-142E-4A90-AD85-82D966BBCB5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC163351-142E-4A90-AD85-82D966BBCB5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

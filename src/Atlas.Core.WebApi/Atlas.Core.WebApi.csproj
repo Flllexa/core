@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atlas.Core.Logging\Atlas.Core.Logging.csproj">
-      <Project>{BA823400-ED12-4665-B9FA-78721C2E0387}</Project>
-      <Name>Atlas.Core.Logging</Name>
+    <ProjectReference Include="..\Atlas.Core\Atlas.Core.csproj">
+      <Project>{12A97536-3CC5-4F48-919E-C4AC3B9B87C9}</Project>
+      <Name>Atlas.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

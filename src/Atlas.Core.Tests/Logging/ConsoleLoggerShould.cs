@@ -3,7 +3,7 @@
 //   © Epworth Consulting Ltd.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Atlas.Core.Logging.Tests
+namespace Atlas.Core.Tests.Logging
 {
    using System;
 

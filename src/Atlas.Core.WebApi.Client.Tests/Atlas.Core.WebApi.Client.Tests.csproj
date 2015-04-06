@@ -77,10 +77,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atlas.Core.Logging\Atlas.Core.Logging.csproj">
-      <Project>{BA823400-ED12-4665-B9FA-78721C2E0387}</Project>
-      <Name>Atlas.Core.Logging</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Atlas.Core.WebApi.Client\Atlas.Core.WebApi.Client.csproj">
       <Project>{BFDCDAB0-DDAB-4893-9563-92E63647A779}</Project>
       <Name>Atlas.Core.WebApi.Client</Name>
@@ -88,6 +84,10 @@
     <ProjectReference Include="..\Atlas.Core.WebApi\Atlas.Core.WebApi.csproj">
       <Project>{E54F172F-8BA8-413B-987F-8D438B6D2723}</Project>
       <Name>Atlas.Core.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Core\Atlas.Core.csproj">
+      <Project>{12a97536-3cc5-4f48-919e-c4ac3b9b87c9}</Project>
+      <Name>Atlas.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
