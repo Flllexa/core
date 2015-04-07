@@ -40,6 +40,8 @@
     <Compile Include="DateTime\IDateTime.cs" />
     <Compile Include="DateTime\CurrentDateTime.cs" />
     <Compile Include="GuidExtensions.cs" />
+    <Compile Include="IO\DefaultApplicationPath.cs" />
+    <Compile Include="IO\IApplicationPath.cs" />
     <Compile Include="Logging\ConsoleLogger.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
