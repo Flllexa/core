@@ -22,9 +22,15 @@ namespace Atlas.Core.Tests.Logging
       }
 
       [Test]
-      public void NotThrowExceptionWhenLogErrorCalled()
+      public void NotThrowExceptionWhenLogErrorCalledWithException()
       {
          Assert.That(() => this.componentUnderTest.LogError("LogError", new Exception()), Throws.Nothing);
+      }
+
+      [Test]
+      public void NotThrowExceptionWhenLogErrorCalledWithoutException()
+      {
+         Assert.That(() => this.componentUnderTest.LogError("LogError"), Throws.Nothing);
       }
 
       [Test]

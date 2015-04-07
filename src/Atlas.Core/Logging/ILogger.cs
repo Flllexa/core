@@ -15,6 +15,8 @@ namespace Atlas.Core.Logging
 
       void LogError(string format, Exception exception, params object[] args);
 
+      void LogError(string format, params object[] args);
+
       void LogWarning(string format, params object[] args);
 
       void LogInfo(string format, params object[] args);

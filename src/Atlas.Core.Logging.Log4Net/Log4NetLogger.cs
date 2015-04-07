@@ -53,6 +53,11 @@ namespace Atlas.Core.Logging.Log4Net
          this.log.Error(message, exception);
       }
 
+      public void LogError(string format, params object[] args)
+      {
+         this.log.ErrorFormat(format, args);
+      }
+
       public void LogWarning(string format, params object[] args)
       {
          this.log.WarnFormat(format, args);

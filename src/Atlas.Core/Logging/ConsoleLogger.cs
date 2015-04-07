@@ -21,9 +21,14 @@ namespace Atlas.Core.Logging
 
       public void LogError(string format, Exception exception, params object[] args)
       {
+         this.LogError(format, args);
+         Console.WriteLine(exception.ToString());
+      }
+
+      public void LogError(string format, params object[] args)
+      {
          var message = string.Format(format, args);
          Console.WriteLine("{0:yyyy-MM-dd HH:mm:ss.fff} ERROR {1}", DateTime.Now, message);
-         Console.WriteLine(exception.ToString());
       }
 
       public void LogWarning(string format, params object[] args)

@@ -50,7 +50,7 @@ namespace Atlas.Core.Logging.Log4Net.Tests
       }
 
       [Test]
-      public void CallErrorFormatFromLogError()
+      public void CallErrorFromLogErrorWithException()
       {
          const string ErrorMessage = "myErrorMessage '{0}'";
          var args = new object[] { "arg" };
@@ -59,6 +59,17 @@ namespace Atlas.Core.Logging.Log4Net.Tests
          this.componentUnderTest.LogError(ErrorMessage, exception, args);
 
          A.CallTo(() => this.log.Error("myErrorMessage 'arg'", exception)).MustHaveHappened(Repeated.Exactly.Once);
+      }
+
+      [Test]
+      public void CallErrorFormatFromLogErrorWithoutException()
+      {
+         const string ErrorMessage = "myErrorMessage '{0}'";
+         var args = new object[] { "arg" };
+
+         this.componentUnderTest.LogError(ErrorMessage, args);
+
+         A.CallTo(() => this.log.ErrorFormat(ErrorMessage, args)).MustHaveHappened(Repeated.Exactly.Once);
       }
 
       [Test]
