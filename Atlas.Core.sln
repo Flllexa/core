@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Core.WebApi.Client", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D303B1B6-6781-4418-8264-F95F223BAFB9}"
 	ProjectSection(SolutionItems) = preProject
-		src\Atlas.Core.snk = src\Atlas.Core.snk
 		src\Settings.StyleCop = src\Settings.StyleCop
 	EndProjectSection
 EndProject
